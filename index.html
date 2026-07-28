@@ -1,10 +1,11 @@
 <!doctype html>
 <!--
   Κωνσταντίνος Πεφάνης — Ψυχολόγος · Ψυχοθεραπευτής | Built by Advon Media
-  Skeleton roll: Hero=oversized typographic · Nav=centered logo split-nav · Services=tabs
-  · Social proof=marquee strip (pauses on hover, static under reduced-motion) · Contact=split map+form
-  Palette updated: Elegant dark slate, warm stone, and deep emerald to reflect a serious, premium, and calming environment.
-  Hero refined: Tighter typography pairing, modern architectural image framing, and resolved overlapping.
+  Skeleton roll: Hero=Centered immersive typographic · Nav=centered split-nav · Services=tabs
+  · Social proof=marquee strip · Contact=split map+form
+  Palette: Elegant dark slate, warm stone, and deep emerald.
+  Hero Updated: Image removed. Layout centered. Added cinematic "wow" effects (animated gradient orbs, 
+  SVG noise texture, staggered entry animations) while strictly maintaining a serious, premium therapeutic tone.
 -->
 <html lang="el">
 <head>
@@ -100,6 +101,7 @@
 
     .wrap { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
     section { padding: 120px 0; }
+    
     .kicker {
       font-size: 12.5px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent);
       font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 14px;
@@ -107,12 +109,14 @@
     .kicker::after { content: ""; display: block; width: 44px; height: 1px; background: var(--accent); }
     h2 { font-size: clamp(34px, 4vw, 52px); margin-bottom: 24px; letter-spacing: -0.01em; }
 
-    /* ---------- Centered split-nav without SVG Logo ---------- */
+    /* ---------- Centered split-nav ---------- */
     .nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 60;
-      background: rgba(245, 243, 239, 0.92); backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(217, 214, 206, 0.6);
+      background: rgba(245, 243, 239, 0.7); backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(217, 214, 206, 0.4);
+      transition: background 0.3s ease;
     }
+    .nav:hover { background: rgba(245, 243, 239, 0.95); }
     .nav-inner {
       max-width: 1240px; margin: 0 auto; padding: 16px 48px;
       display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 28px;
@@ -163,57 +167,127 @@
     }
     .mnav-close:hover { background: rgba(255,255,255,0.1); }
 
-    /* ---------- Refined Hero Section ---------- */
-    .hero { padding: 180px 0 0; position: relative; }
-    .hero .wrap { position: relative; z-index: 2; }
-    .hero .kicker { margin-bottom: 24px; }
+    /* ---------- HERO: Cinematic & Centered ---------- */
+    .hero { 
+      position: relative; 
+      min-height: 95vh;
+      display: flex; 
+      flex-direction: column;
+      justify-content: center;
+      padding: 140px 0 80px;
+      overflow: hidden;
+      background: var(--bg);
+    }
+    
+    /* Wow Effects: Background */
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      overflow: hidden;
+    }
+    .hero-bg-gradient {
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.8) 0%, transparent 80%);
+      z-index: 1;
+    }
+    .orb {
+      position: absolute; border-radius: 50%; filter: blur(90px);
+      animation: float 24s ease-in-out infinite alternate;
+      opacity: 0.6;
+    }
+    .orb-1 {
+      width: 70vw; height: 70vw; max-width: 800px; max-height: 800px;
+      background: rgba(213, 225, 232, 0.8); /* Warm Stone / Accent soft */
+      top: -20%; left: -10%;
+    }
+    .orb-2 {
+      width: 60vw; height: 60vw; max-width: 700px; max-height: 700px;
+      background: rgba(44, 72, 86, 0.15); /* Deep Slate */
+      bottom: -10%; right: -5%;
+      animation-delay: -7s;
+      animation-duration: 28s;
+    }
+    .orb-3 {
+      width: 50vw; height: 50vw; max-width: 600px; max-height: 600px;
+      background: rgba(55, 74, 64, 0.1); /* Emerald */
+      top: 40%; left: 40%;
+      animation-delay: -14s;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(4%, 6%) scale(1.1); }
+      100% { transform: translate(-3%, -2%) scale(0.95); }
+    }
+
+    /* Premium Noise Overlay for cinematic texture */
+    .noise-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+
+    /* Hero Content Setup */
+    .hero .wrap { position: relative; z-index: 10; width: 100%; }
+    .hero-content {
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      max-width: 900px; margin: 0 auto;
+    }
+
+    /* Entry Animations */
+    .anim-up { opacity: 0; transform: translateY(30px); }
+    .anim-up.run { animation: slideUpFade 1s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+    .d-1 { animation-delay: 0.1s; }
+    .d-2 { animation-delay: 0.3s; }
+    .d-3 { animation-delay: 0.5s; }
+    .d-4 { animation-delay: 0.7s; }
+
+    @keyframes slideUpFade {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content .kicker { 
+      justify-content: center; margin-bottom: 30px; color: var(--accent-deep); 
+      font-size: 13.5px;
+    }
+    .hero-content .kicker::before { content: ""; width: 36px; height: 1px; background: var(--accent); margin-right: 14px; }
+    .hero-content .kicker::after { content: ""; width: 36px; height: 1px; background: var(--accent); margin-left: 14px; display: block; }
+    
     .hero h1 {
-      font-size: clamp(38px, 6vw, 72px); /* Smaller, elegant sizing */
+      font-size: clamp(48px, 8vw, 92px); /* Much larger, high impact */
       letter-spacing: -0.02em; line-height: 1.05;
-      margin-bottom: 0; /* Removed bottom margin to pull closer to subtext */
+      margin-bottom: 36px;
       color: var(--ink);
+      text-shadow: 0 10px 40px rgba(255,255,255,0.7); /* Soft glow popping out of the texture */
     }
     .hero h1 em { font-style: italic; color: var(--accent); font-weight: 400; }
     
-    .hero-sub {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; 
-      margin-top: 24px; /* Pulled closer to the headline */
+    .hero-desc { 
+      color: var(--ink-soft); font-size: clamp(19px, 2.5vw, 24px); 
+      font-weight: 300; max-width: 44ch; line-height: 1.6; margin-bottom: 56px; 
     }
-    .hero-sub p { color: var(--ink-soft); font-size: 20px; font-weight: 300; max-width: 50ch; margin-bottom: 36px; line-height: 1.6; }
     
-    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-ctas { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
     .btn {
       display: inline-flex; align-items: center; justify-content: center; text-decoration: none; 
       font-weight: 600; font-size: 15px; letter-spacing: 0.04em;
-      padding: 16px 36px; border-radius: 40px; transition: all 0.3s ease;
+      padding: 18px 40px; border-radius: 40px; transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1);
     }
-    .btn-primary { background: var(--accent-deep); color: #fff; box-shadow: 0 8px 20px rgba(27,42,50,0.15); }
-    .btn-primary:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 24px rgba(27,42,50,0.2); color: #fff; }
-    .btn-ghost { border: 1px solid var(--ink); color: var(--ink); }
-    .btn-ghost:hover { background: var(--ink); color: var(--bg); }
+    .btn-primary { background: var(--accent-deep); color: #fff; box-shadow: 0 8px 24px rgba(27,42,50,0.2); }
+    .btn-primary:hover { background: var(--accent); transform: translateY(-3px); box-shadow: 0 16px 32px rgba(27,42,50,0.3); color: #fff; }
+    .btn-ghost { 
+      background: rgba(255,255,255,0.4); border: 1px solid var(--ink); color: var(--ink); 
+      backdrop-filter: blur(4px);
+    }
+    .btn-ghost:hover { background: var(--ink); color: var(--bg); transform: translateY(-3px); box-shadow: 0 16px 32px rgba(0,0,0,0.1); }
 
-    /* "Wow" architectural framing for the photo */
-    .hero-photo { position: relative; padding-bottom: 30px; }
-    .hero-photo::before {
-      content: ""; position: absolute; inset: 0 20px -10px 20px; 
-      background: var(--surface); border-radius: 200px 200px 12px 12px; 
-      transform: rotate(-4deg); z-index: 0; transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
-    }
-    .hero-photo:hover::before { transform: rotate(0deg) scale(1.02); background: var(--accent-soft); }
-    .hero-photo img {
-      position: relative; z-index: 1; width: 100%; max-width: 440px; aspect-ratio: 3/4; 
-      object-fit: cover; border-radius: 200px 200px 12px 12px; cursor: zoom-in;
-      box-shadow: 0 24px 48px -12px rgba(24, 28, 27, 0.15);
-      margin: 0 auto;
-    }
-
-    /* Fixed overlap: Cred strip gets its own space */
+    /* Cred Strip slightly separated from the immersive hero */
     .cred-strip { 
-      background: var(--ink); color: var(--bg); padding: 26px 0; 
-      margin-top: 60px; /* Separated from hero to stop bad overlapping */
+      background: var(--ink); color: var(--bg); padding: 32px 0; 
+      position: relative; z-index: 10;
     }
-    .cred-grid { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-    .cred-grid div { font-size: 14.5px; letter-spacing: 0.05em; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 8px; }
+    .cred-grid { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; text-align: center; }
+    .cred-grid div { font-size: 15px; letter-spacing: 0.05em; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 10px; }
     .cred-grid b { color: #fff; font-weight: 600; }
 
     /* ---------- About ---------- */
@@ -246,7 +320,7 @@
     }
     .edu-strip li b { color: var(--ink); font-weight: 600; }
 
-    /* ---------- Approach: Staggered Wow Grid ---------- */
+    /* ---------- Approach ---------- */
     .approach { background: var(--accent-deep); color: var(--bg); }
     .approach .kicker { color: var(--accent-soft); }
     .approach .kicker::after { background: var(--accent-soft); }
@@ -258,7 +332,6 @@
       border-radius: 16px; padding: 44px 36px; transition: transform 0.4s ease, background 0.4s ease;
       position: relative; overflow: hidden;
     }
-    /* Stagger middle card for dynamic layout */
     .ap-card:nth-child(2) { transform: translateY(30px); }
     .ap-card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.06); }
     .ap-card:nth-child(2):hover { transform: translateY(20px); }
@@ -269,7 +342,7 @@
     .ap-card h3 { font-size: 24px; margin-bottom: 16px; color: #fff; }
     .ap-card p { color: rgba(255,255,255,0.7); font-size: 15.5px; font-weight: 300; line-height: 1.7; }
 
-    /* ---------- Services: Tabs ---------- */
+    /* ---------- Services ---------- */
     .tabs-bar { display: flex; gap: 12px; flex-wrap: wrap; margin: 40px 0 48px; }
     .tab-btn {
       background: var(--surface); border: 1px solid transparent; border-radius: 40px; cursor: pointer;
@@ -304,7 +377,6 @@
     .score b { font-size: 72px; color: var(--accent-deep); font-weight: 500; line-height: 0.9; display: block; }
     .score span { font-size: 14.5px; font-family: var(--sans); color: var(--ink-soft); margin-top: 8px; font-weight: 500; }
     
-    /* Sleek gradient mask for marquee */
     .marquee { 
       position: relative; width: 100vw; margin-left: calc(50% - 50vw);
       mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
@@ -324,13 +396,8 @@
     .rv-card p { font-size: 15.5px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 24px; font-style: italic; }
     .rv-card cite { font-style: normal; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
     .reviews .src { margin-top: 50px; font-size: 14px; color: var(--ink-soft); font-weight: 500; }
-    
-    @media (prefers-reduced-motion: reduce){
-      .marquee { overflow-x: auto; mask-image: none; -webkit-mask-image: none; }
-      .marquee-track { animation: none; }
-    }
 
-    /* ---------- Contact: Split ---------- */
+    /* ---------- Contact ---------- */
     .contact-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: stretch; margin-top: 30px; }
     
     .loc-card { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
@@ -401,11 +468,15 @@
     /* ---------- Reveal ---------- */
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.2, 1, 0.3, 1), transform 0.8s cubic-bezier(0.2, 1, 0.3, 1); }
     .reveal.in { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce){
-      .reveal { opacity: 1; transform: none; transition: none; }
-    }
 
     /* ---------- Responsive ---------- */
+    @media (prefers-reduced-motion: reduce){
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .anim-up { opacity: 1; transform: none; animation: none; }
+      .orb { animation: none; }
+      .marquee { overflow-x: auto; mask-image: none; -webkit-mask-image: none; }
+      .marquee-track { animation: none; }
+    }
     @media (max-width: 1023px){
       .nav-side { display: none; }
       .nav-inner { grid-template-columns: auto 1fr auto; padding: 16px 24px; }
@@ -414,10 +485,9 @@
       .burger { display: flex; justify-self: end; }
       .wrap { padding: 0 28px; }
       section { padding: 90px 0; }
-      .hero { padding: 140px 0 0; }
-      .hero-sub { grid-template-columns: 1fr; gap: 40px; margin-top: 30px; }
-      .hero h1 { font-size: clamp(34px, 8vw, 48px); }
-      .hero-photo { max-width: 400px; margin: 0 auto; }
+      .hero { padding: 140px 0 60px; min-height: 80vh; }
+      .orb-1, .orb-2, .orb-3 { width: 90vw; height: 90vw; }
+      .cred-grid { gap: 24px; }
       .about-grid { grid-template-columns: 1fr; gap: 50px; }
       .approach-grid { grid-template-columns: 1fr; gap: 24px; }
       .ap-card:nth-child(2) { transform: none; }
@@ -426,13 +496,16 @@
       .foot { flex-direction: column; align-items: flex-start; gap: 20px; }
     }
     @media (max-width: 640px){
+      .hero h1 { font-size: clamp(38px, 11vw, 54px); }
+      .hero-desc { font-size: 18px; margin-bottom: 40px; }
+      .hero-ctas { flex-direction: column; width: 100%; gap: 14px; }
+      .hero-ctas .btn { width: 100%; }
       .loc-body { grid-template-columns: 1fr; padding: 30px; gap: 24px; }
       .loc-map { padding: 40px 30px; }
       .cta-panel { padding: 44px 30px; }
       .cta-panel h3 { font-size: 30px; }
       .rv-card { width: 320px; padding: 28px; }
-      .cred-grid { flex-direction: column; gap: 12px; }
-      .hero h1 { font-size: 38px; }
+      .cred-grid { flex-direction: column; gap: 12px; align-items: center; }
     }
   </style>
 </head>
@@ -478,36 +551,42 @@
 
   <div id="top"></div>
 
-  <!-- ============ HERO ============ -->
+  <!-- ============ HERO: CENTERED & CINEMATIC ============ -->
   <header class="hero">
-    <div class="wrap">
-      <p class="kicker reveal" data-el="Γνωσιακή Συμπεριφορική Θεραπεία · Αθήνα &amp; Online" data-en="Cognitive Behavioural Therapy · Athens &amp; Online">Γνωσιακή Συμπεριφορική Θεραπεία · Αθήνα &amp; Online</p>
-      <h1 class="reveal" data-el="Η σκέψη αλλάζει.&lt;br&gt;Η ζωή &lt;em&gt;ακολουθεί&lt;/em&gt;." data-en="Thinking changes.&lt;br&gt;Life &lt;em&gt;follows&lt;/em&gt;.">Η σκέψη αλλάζει.<br>Η ζωή <em>ακολουθεί</em>.</h1>
-      
-      <div class="hero-sub">
-        <div class="reveal">
-          <p data-el="Είμαι ο Κωνσταντίνος Πεφάνης, Ψυχολόγος – Ψυχοθεραπευτής. Με επιστημονική κατάρτιση στη Γνωσιακή Συμπεριφορική Θεραπεία και πιστοποίηση από την EABCT, σας βοηθώ να κατανοήσετε τα μοτίβα που σας δυσκολεύουν — και να τα αλλάξετε." data-en="I am Konstantinos Pefanis, Psychologist and Psychotherapist. With scientific training in Cognitive Behavioural Therapy and EABCT certification, I help you understand the patterns that hold you back — and change them.">Είμαι ο Κωνσταντίνος Πεφάνης, Ψυχολόγος – Ψυχοθεραπευτής. Με επιστημονική κατάρτιση στη Γνωσιακή Συμπεριφορική Θεραπεία και πιστοποίηση από την EABCT, σας βοηθώ να κατανοήσετε τα μοτίβα που σας δυσκολεύουν — και να τα αλλάξετε.</p>
-          <div class="hero-ctas">
-            <a class="btn btn-primary" href="tel:+302107440351" data-el="Καλέστε: 210 744 0351" data-en="Call: 210 744 0351">Καλέστε: 210 744 0351</a>
-            <a class="btn btn-ghost" href="https://www.doctoranytime.gr/d/Psychologos/pefanis-konstantinos" target="_blank" rel="noopener" data-el="Κλείστε ραντεβού online" data-en="Book online">Κλείστε ραντεβού online</a>
-          </div>
-        </div>
-        
-        <div class="hero-photo reveal">
-          <img src="assets/pefanis.webp" alt="Πορτρέτο του ψυχολόγου Κωνσταντίνου Πεφάνη" width="440" height="586" data-lightbox>
-        </div>
-      </div>
+    <!-- Wow Effects: Animated Orbs & Noise Filter -->
+    <div class="hero-bg">
+      <div class="hero-bg-gradient"></div>
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="noise-overlay"></div>
     </div>
-    
-    <div class="cred-strip reveal">
-      <div class="wrap cred-grid">
-        <div><b data-el="Άδεια 2136/2018" data-en="License 2136/2018">Άδεια 2136/2018</b> · <span data-el="Ψυχολόγου" data-en="Psychologist">Ψυχολόγου</span></div>
-        <div><b data-el="Πιστοποίηση EABCT" data-en="EABCT Certified">Πιστοποίηση EABCT</b> · <span data-el="Θεραπευτής CBT" data-en="CBT Therapist">Θεραπευτής CBT</span></div>
-        <div><b>10/10</b> · <span data-el="σε 8 αξιολογήσεις" data-en="from 8 reviews">σε 8 αξιολογήσεις</span></div>
-        <div><b data-el="Δια ζώσης &amp; Online" data-en="In person &amp; Online">Δια ζώσης &amp; Online</b> · <span data-el="EL &amp; EN" data-en="EL &amp; EN">EL &amp; EN</span></div>
+
+    <div class="wrap">
+      <div class="hero-content">
+        <p class="kicker anim-up d-1" data-el="Γνωσιακή Συμπεριφορική Θεραπεία · Αθήνα &amp; Online" data-en="Cognitive Behavioural Therapy · Athens &amp; Online">Γνωσιακή Συμπεριφορική Θεραπεία · Αθήνα &amp; Online</p>
+        
+        <h1 class="anim-up d-2" data-el="Η σκέψη αλλάζει.&lt;br&gt;Η ζωή &lt;em&gt;ακολουθεί&lt;/em&gt;." data-en="Thinking changes.&lt;br&gt;Life &lt;em&gt;follows&lt;/em&gt;.">Η σκέψη αλλάζει.<br>Η ζωή <em>ακολουθεί</em>.</h1>
+        
+        <p class="hero-desc anim-up d-3" data-el="Είμαι ο Κωνσταντίνος Πεφάνης, Ψυχολόγος – Ψυχοθεραπευτής. Με επιστημονική κατάρτιση στη Γνωσιακή Συμπεριφορική Θεραπεία και πιστοποίηση από την EABCT, σας βοηθώ να κατανοήσετε τα μοτίβα που σας δυσκολεύουν — και να τα αλλάξετε." data-en="I am Konstantinos Pefanis, Psychologist and Psychotherapist. With scientific training in Cognitive Behavioural Therapy and EABCT certification, I help you understand the patterns that hold you back — and change them.">Είμαι ο Κωνσταντίνος Πεφάνης, Ψυχολόγος – Ψυχοθεραπευτής. Με επιστημονική κατάρτιση στη Γνωσιακή Συμπεριφορική Θεραπεία και πιστοποίηση από την EABCT, σας βοηθώ να κατανοήσετε τα μοτίβα που σας δυσκολεύουν — και να τα αλλάξετε.</p>
+        
+        <div class="hero-ctas anim-up d-4">
+          <a class="btn btn-primary" href="tel:+302107440351" data-el="Καλέστε: 210 744 0351" data-en="Call: 210 744 0351">Καλέστε: 210 744 0351</a>
+          <a class="btn btn-ghost" href="https://www.doctoranytime.gr/d/Psychologos/pefanis-konstantinos" target="_blank" rel="noopener" data-el="Κλείστε ραντεβού online" data-en="Book online">Κλείστε ραντεβού online</a>
+        </div>
       </div>
     </div>
   </header>
+
+  <!-- Extracted Credibility Strip -->
+  <div class="cred-strip reveal">
+    <div class="wrap cred-grid">
+      <div><b data-el="Άδεια 2136/2018" data-en="License 2136/2018">Άδεια 2136/2018</b> · <span data-el="Ψυχολόγου" data-en="Psychologist">Ψυχολόγου</span></div>
+      <div><b data-el="Πιστοποίηση EABCT" data-en="EABCT Certified">Πιστοποίηση EABCT</b> · <span data-el="Θεραπευτής CBT" data-en="CBT Therapist">Θεραπευτής CBT</span></div>
+      <div><b>10/10</b> · <span data-el="σε 8 αξιολογήσεις" data-en="from 8 reviews">σε 8 αξιολογήσεις</span></div>
+      <div><b data-el="Δια ζώσης &amp; Online" data-en="In person &amp; Online">Δια ζώσης &amp; Online</b> · <span data-el="EL &amp; EN" data-en="EL &amp; EN">EL &amp; EN</span></div>
+    </div>
+  </div>
 
   <!-- ============ ABOUT ============ -->
   <section id="about">
@@ -709,6 +788,13 @@
   <script>
   (function(){
     "use strict";
+
+    /* ---------- Intro Anim Trigger ---------- */
+    window.addEventListener("load", function(){
+      document.querySelectorAll(".anim-up").forEach(function(el){
+        el.classList.add("run");
+      });
+    });
 
     /* ---------- i18n toggle ---------- */
     function setLang(lang){
