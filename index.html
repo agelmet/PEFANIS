@@ -35,7 +35,7 @@
         "name": "Κωνσταντίνος Πεφάνης — Ψυχολόγος · Ψυχοθεραπευτής",
         "description": "Ψυχολόγος - Ψυχοθεραπευτής με πιστοποιημένη εξειδίκευση στη Γνωσιακή Συμπεριφορική Θεραπεία (CBT). Δια ζώσης συνεδρίες στην Αθήνα και online.",
         "image": "assets/pefanis.webp",
-        "telephone": "+302107440351",
+        "telephone": "+306985800405",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Ακαδημίας 81",
@@ -54,7 +54,7 @@
         "name": "Κωνσταντίνος Πεφάνης",
         "jobTitle": "Ψυχολόγος - Ψυχοθεραπευτής",
         "image": "assets/pefanis.webp",
-        "telephone": "+302107440351",
+        "telephone": "+306985800405",
         "knowsLanguage": ["Ελληνικά", "Αγγλικά"],
         "alumniOf": [
           { "@type": "CollegeOrUniversity", "name": "Teesside University" },
@@ -65,7 +65,7 @@
           { "@type": "Organization", "name": "European Association of Cognitive and Behavioral Therapies (EABCT)" },
           { "@type": "Organization", "name": "Ελληνική Εταιρεία Έρευνας της Συμπεριφοράς (ΕΕΕΣ)" }
         ],
-        "sameAs": ["https://www.doctoranytime.gr/d/Psychologos/pefanis-konstantinos"]
+        "sameAs": ["https://www.doctoranytime.gr/d/Psychologos/pefanis-konstantinos", "https://www.instagram.com/focustherapy_/"]
       }
     ]
   }
@@ -357,12 +357,31 @@
     .tab-panel.active { display: block; }
     .tab-panel .tp-desc { color: var(--ink-soft); max-width: 70ch; margin-bottom: 36px; font-size: 18px; font-weight: 300; }
     
+    /* Motto: a feature moment before the approach band, so it gets real air around it. */
+    .space-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+    .space-item { margin: 0; }
+    .space-item img {
+      width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover;
+      border-radius: 10px; cursor: zoom-in; display: block;
+      transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+    }
+    .space-item img:hover { transform: translateY(-4px); }
+    @media (max-width: 760px) { .space-grid { grid-template-columns: 1fr; } }
+    .motto-band { padding: clamp(72px, 11vw, 140px) 0; text-align: center; }
+    .motto {
+      margin: 0 auto; max-width: 34ch; border: 0; padding: 0;
+      font-style: italic; font-weight: 300; line-height: 1.55;
+      font-size: clamp(21px, 2.9vw, 33px); color: var(--ink);
+      text-wrap: balance;
+    }
     .svc-list { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 48px; list-style: none; }
     .svc-list li {
       background: var(--paper); border: 1px solid var(--line); border-radius: 12px;
       padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px;
       font-size: 16px; font-weight: 500; transition: box-shadow 0.3s, border-color 0.3s;
     }
+    /* the lists are two-up; an odd final item would otherwise leave a hole beside it */
+    .svc-list li:last-child:nth-child(odd) { grid-column: 1 / -1; }
     .svc-list li:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.04); border-color: var(--accent-soft); }
     .svc-list li em { font-style: normal; background: var(--surface); color: var(--ink-soft); font-size: 13px; font-weight: 600; padding: 4px 10px; border-radius: 20px; white-space: nowrap; }
     .services-note { margin-top: 40px; font-size: 14.5px; color: var(--ink-soft); font-style: italic; }
@@ -449,6 +468,17 @@
     .foot { display: flex; justify-content: space-between; align-items: center; gap: 30px; flex-wrap: wrap; }
     .foot .logo .lg-name { color: #fff; text-align: left; }
     .foot .logo .lg-name small { color: rgba(255,255,255,0.5); }
+    .foot-logo { width: 64px; height: auto; border-radius: 6px; display: block; margin-bottom: 10px; }
+    .foot-badges { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+    .foot-badges .badge {
+      height: 30px; width: auto; box-sizing: content-box;
+      background: #fff; padding: 7px 12px; border-radius: 7px;
+      filter: grayscale(1); opacity: 0.5;
+      transition: filter 0.3s ease, opacity 0.3s ease;
+    }
+    .foot-badges .badge:hover, .foot-badges .badge:focus { filter: none; opacity: 0.95; }
+    .foot-tel, .foot-ig { font-weight: 600; }
+    @media (max-width: 700px) { .foot-badges { gap: 14px; justify-content: center; } .foot-badges .badge { height: 24px; padding: 6px 10px; } }
     footer a { color: rgba(255,255,255,0.8); text-decoration: none; }
     footer a:hover { color: #fff; }
 
@@ -566,12 +596,12 @@
       <div class="hero-content">
         <p class="kicker anim-up d-1" data-el="Γνωσιακή Συμπεριφορική Θεραπεία · Αθήνα &amp; Online" data-en="Cognitive Behavioural Therapy · Athens &amp; Online">Γνωσιακή Συμπεριφορική Θεραπεία · Αθήνα &amp; Online</p>
         
-        <h1 class="anim-up d-2" data-el="Η σκέψη αλλάζει.&lt;br&gt;Η ζωή &lt;em&gt;ακολουθεί&lt;/em&gt;." data-en="Thinking changes.&lt;br&gt;Life &lt;em&gt;follows&lt;/em&gt;.">Η σκέψη αλλάζει.<br>Η ζωή <em>ακολουθεί</em>.</h1>
+        <h1 class="anim-up d-2" data-el="Η σκέψη αλλάζει,&lt;br&gt;η ζωή &lt;em&gt;ακολουθεί&lt;/em&gt;" data-en="Thinking changes,&lt;br&gt;life &lt;em&gt;follows&lt;/em&gt;">Η σκέψη αλλάζει,<br>η ζωή <em>ακολουθεί</em></h1>
         
-        <p class="hero-desc anim-up d-3" data-el="Είμαι ο Κωνσταντίνος Πεφάνης, Ψυχολόγος – Ψυχοθεραπευτής. Με επιστημονική κατάρτιση στη Γνωσιακή Συμπεριφορική Θεραπεία και πιστοποίηση από την EABCT, σας βοηθώ να κατανοήσετε τα μοτίβα που σας δυσκολεύουν — και να τα αλλάξετε." data-en="I am Konstantinos Pefanis, Psychologist and Psychotherapist. With scientific training in Cognitive Behavioural Therapy and EABCT certification, I help you understand the patterns that hold you back — and change them.">Είμαι ο Κωνσταντίνος Πεφάνης, Ψυχολόγος – Ψυχοθεραπευτής. Με επιστημονική κατάρτιση στη Γνωσιακή Συμπεριφορική Θεραπεία και πιστοποίηση από την EABCT, σας βοηθώ να κατανοήσετε τα μοτίβα που σας δυσκολεύουν — και να τα αλλάξετε.</p>
+        <p class="hero-desc anim-up d-3" data-el="Είμαι ο Κωνσταντίνος Πεφάνης, Ψυχολόγος – Ψυχοθεραπευτής. Με επιστημονική κατάρτιση στη Γνωσιακή Συμπεριφορική Θεραπεία και πιστοποίηση από την EABCT και την Ελληνική Εταιρεία Έρευνας της Συμπεριφοράς (ΕΕΕΣ), σας βοηθώ να κατανοήσετε τα μοτίβα που σας δυσκολεύουν — και να τα αλλάξετε." data-en="I am Konstantinos Pefanis, Psychologist and Psychotherapist. With scientific training in Cognitive Behavioural Therapy and certification from the EABCT and the Hellenic Association for Behaviour Research (ΕΕΕΣ), I help you understand the patterns that hold you back — and change them.">Είμαι ο Κωνσταντίνος Πεφάνης, Ψυχολόγος – Ψυχοθεραπευτής. Με επιστημονική κατάρτιση στη Γνωσιακή Συμπεριφορική Θεραπεία και πιστοποίηση από την EABCT και την Ελληνική Εταιρεία Έρευνας της Συμπεριφοράς (ΕΕΕΣ), σας βοηθώ να κατανοήσετε τα μοτίβα που σας δυσκολεύουν — και να τα αλλάξετε.</p>
         
         <div class="hero-ctas anim-up d-4">
-          <a class="btn btn-primary" href="tel:+302107440351" data-el="Καλέστε: 210 744 0351" data-en="Call: 210 744 0351">Καλέστε: 210 744 0351</a>
+          <a class="btn btn-primary" href="tel:+306985800405" data-el="Καλέστε: 698 580 0405" data-en="Call: 698 580 0405">Καλέστε: 698 580 0405</a>
           <a class="btn btn-ghost" href="https://www.doctoranytime.gr/d/Psychologos/pefanis-konstantinos" target="_blank" rel="noopener" data-el="Κλείστε ραντεβού online" data-en="Book online">Κλείστε ραντεβού online</a>
         </div>
       </div>
@@ -600,23 +630,31 @@
         <div class="reveal">
           <h2 data-el="Επιστήμη με ανθρώπινο πρόσωπο" data-en="Science with a human face">Επιστήμη με ανθρώπινο πρόσωπο</h2>
           <p data-el="Σπούδασα Ψυχολογία και Συμβουλευτική στο Teesside University της Αγγλίας και ολοκλήρωσα μεταπτυχιακές σπουδές (MSc) στην Κλινική Ψυχολογία και Συμβουλευτική στο University of Derby. Εξειδικεύτηκα στην Κλινική Ψυχοπαθολογία και τη Διαφορική Διάγνωση στο Πανεπιστήμιο Ιωαννίνων και ολοκλήρωσα τετραετή πιστοποιημένη εξειδίκευση στη Γνωσιακή Συμπεριφορική Θεραπεία (CBT) στην Εταιρεία Γνωσιακών Συμπεριφοριστικών Σπουδών." data-en="I studied Psychology and Counselling at Teesside University in England and completed an MSc in Clinical Psychology and Counselling at the University of Derby. I specialised in Clinical Psychopathology and Differential Diagnosis at the University of Ioannina and completed a four-year certified specialisation in Cognitive Behavioural Therapy (CBT) at the Society of Cognitive Behavioural Studies.">Σπούδασα Ψυχολογία και Συμβουλευτική στο Teesside University της Αγγλίας και ολοκλήρωσα μεταπτυχιακές σπουδές (MSc) στην Κλινική Ψυχολογία και Συμβουλευτική στο University of Derby. Εξειδικεύτηκα στην Κλινική Ψυχοπαθολογία και τη Διαφορική Διάγνωση στο Πανεπιστήμιο Ιωαννίνων και ολοκλήρωσα τετραετή πιστοποιημένη εξειδίκευση στη Γνωσιακή Συμπεριφορική Θεραπεία (CBT) στην Εταιρεία Γνωσιακών Συμπεριφοριστικών Σπουδών.</p>
-          <p data-el="Είμαι πιστοποιημένος θεραπευτής από την European Association of Cognitive and Behavioral Therapies (EABCT) και την Ελληνική Εταιρεία Έρευνας της Συμπεριφοράς (ΕΕΕΣ), και ενεργό μέλος της επιστημονικής ομάδας RECBT Greece για την τεκμηρίωση της αποτελεσματικότητας των ψυχοθεραπειών στην Ελλάδα." data-en="I am a certified therapist of the European Association of Cognitive and Behavioural Therapies (EABCT) and the Greek Association for Behaviour Research, and an active member of the RECBT Greece scientific team documenting the effectiveness of psychotherapies in Greece.">Είμαι πιστοποιημένος θεραπευτής από την European Association of Cognitive and Behavioral Therapies (EABCT) και την Ελληνική Εταιρεία Έρευνας της Συμπεριφοράς (ΕΕΕΣ), και ενεργό μέλος της επιστημονικής ομάδας RECBT Greece για την τεκμηρίωση της αποτελεσματικότητας των ψυχοθεραπειών στην Ελλάδα.</p>
+          <p data-el="Είμαι πιστοποιημένος θεραπευτής από την European Association of Cognitive and Behavioral Therapies (EABCT) και την Ελληνική Εταιρεία Έρευνας της Συμπεριφοράς (ΕΕΕΣ), και ενεργό μέλος της επιστημονικής ομάδας RECBT Greece για την τεκμηρίωση της αποτελεσματικότητας των ψυχοθεραπειών στην Ελλάδα. Η δουλειά μου συνοδεύεται από τακτική εποπτεία από έμπειρο κλινικό ψυχολόγο/ψυχοθεραπευτή, ώστε να διασφαλίζεται η ποιότητα και η συνέπεια της θεραπευτικής διαδικασίας." data-en="I am a certified therapist of the European Association of Cognitive and Behavioural Therapies (EABCT) and the Greek Association for Behaviour Research, and an active member of the RECBT Greece scientific team documenting the effectiveness of psychotherapies in Greece. My work is accompanied by regular supervision from an experienced clinical psychologist/psychotherapist, so that the quality and consistency of the therapeutic process are safeguarded.">Είμαι πιστοποιημένος θεραπευτής από την European Association of Cognitive and Behavioral Therapies (EABCT) και την Ελληνική Εταιρεία Έρευνας της Συμπεριφοράς (ΕΕΕΣ), και ενεργό μέλος της επιστημονικής ομάδας RECBT Greece για την τεκμηρίωση της αποτελεσματικότητας των ψυχοθεραπειών στην Ελλάδα. Η δουλειά μου συνοδεύεται από τακτική εποπτεία από έμπειρο κλινικό ψυχολόγο/ψυχοθεραπευτή, ώστε να διασφαλίζεται η ποιότητα και η συνέπεια της θεραπευτικής διαδικασίας.</p>
           <p data-el="Από το 2015 έχω συνεργαστεί με δομές ψυχικής υγείας όπως το Συμβουλευτικό Κέντρο Μαβίλης, το Κέντρο Παιδιού και Εφήβου «Ηλίανθος» και το Κέντρο Ειδικών Θεραπειών ΑΜΕΑ, ενώ διετέλεσα επιστημονικά υπεύθυνος σε μονάδες φροντίδας. Είμαι ιδρυτής και συντονιστής του «Focus Therapy» — μιας συντονισμένης προσπάθειας πιστοποιημένων ψυχολόγων για την ανάδειξη και αντιμετώπιση των προβλημάτων ψυχικής υγείας των νέων στη χώρα μας." data-en="Since 2015 I have worked with mental health services such as the Mavilis Counselling Centre, the “Ilianthos” Child and Adolescent Centre and the Centre for Special Therapies for People with Disabilities, and served as scientific director in care units. I am the founder and coordinator of “Focus Therapy” — a coordinated initiative of certified psychologists highlighting and addressing the mental health problems young people face in Greece.">Από το 2015 έχω συνεργαστεί με δομές ψυχικής υγείας όπως το Συμβουλευτικό Κέντρο Μαβίλης, το Κέντρο Παιδιού και Εφήβου «Ηλίανθος» και το Κέντρο Ειδικών Θεραπειών ΑΜΕΑ, ενώ διετέλεσα επιστημονικά υπεύθυνος σε μονάδες φροντίδας. Είμαι ιδρυτής και συντονιστής του «Focus Therapy» — μιας συντονισμένης προσπάθειας πιστοποιημένων ψυχολόγων για την ανάδειξη και αντιμετώπιση των προβλημάτων ψυχικής υγείας των νέων στη χώρα μας.</p>
           <p data-el="Στο γραφείο μου στην Αθήνα ή μέσω βιντεοκλήσης, θα βρείτε έναν χώρο χωρίς κριτική — με μέθοδο, σαφήνεια και σεβασμό στον δικό σας ρυθμό." data-en="At my Athens office or via video call, you will find a space free of judgement — with method, clarity and respect for your own pace.">Στο γραφείο μου στην Αθήνα ή μέσω βιντεοκλήσης, θα βρείτε έναν χώρο χωρίς κριτική — με μέθοδο, σαφήνεια και σεβασμό στον δικό σας ρυθμό.</p>
           
           <div class="edu-strip">
             <h3 data-el="Σπουδές &amp; Πιστοποιήσεις" data-en="Education &amp; Certifications">Σπουδές &amp; Πιστοποιήσεις</h3>
             <ul>
+              <li><b data-el="Τετραετής εξειδίκευση CBT" data-en="Four-year CBT specialisation">Τετραετής εξειδίκευση CBT</b> — <span data-el="Εταιρεία Γνωσιακών Συμπεριφοριστικών Σπουδών" data-en="Society of Cognitive Behavioural Studies">Εταιρεία Γνωσιακών Συμπεριφοριστικών Σπουδών</span></li>
+              <li><b data-el="Πιστοποιημένος θεραπευτής ΕΕΕΣ" data-en="ΕΕΕΣ certified therapist">Πιστοποιημένος θεραπευτής ΕΕΕΣ</b> — <span data-el="Ελληνική Εταιρεία Έρευνας της Συμπεριφοράς" data-en="Hellenic Association for Behaviour Research">Ελληνική Εταιρεία Έρευνας της Συμπεριφοράς</span></li>
+              <li><b data-el="Πιστοποιημένος θεραπευτής EABCT" data-en="EABCT certified therapist">Πιστοποιημένος θεραπευτής EABCT</b> — <span data-el="Μέλος RECBT Greece" data-en="Member of RECBT Greece">Μέλος RECBT Greece</span></li>
+              <li><b data-el="Εξειδίκευση Κλινικής Ψυχοπαθολογίας" data-en="Specialisation in Clinical Psychopathology">Εξειδίκευση Κλινικής Ψυχοπαθολογίας</b> — <span data-el="Πανεπιστήμιο Ιωαννίνων" data-en="University of Ioannina">Πανεπιστήμιο Ιωαννίνων</span></li>
               <li><b>BSc (Hons) Psychology &amp; Counselling</b> — Teesside University</li>
               <li><b>MSc Clinical Psychology &amp; Counselling</b> — University of Derby</li>
-              <li><b data-el="Εξειδίκευση Κλινικής Ψυχοπαθολογίας" data-en="Specialisation in Clinical Psychopathology">Εξειδίκευση Κλινικής Ψυχοπαθολογίας</b> — <span data-el="Πανεπιστήμιο Ιωαννίνων" data-en="University of Ioannina">Πανεπιστήμιο Ιωαννίνων</span></li>
-              <li><b data-el="Τετραετής εξειδίκευση CBT" data-en="Four-year CBT specialisation">Τετραετής εξειδίκευση CBT</b> — <span data-el="Εταιρεία Γνωσιακών Συμπεριφοριστικών Σπουδών" data-en="Society of Cognitive Behavioural Studies">Εταιρεία Γνωσιακών Συμπεριφοριστικών Σπουδών</span></li>
-              <li><b data-el="Πιστοποιημένος θεραπευτής EABCT &amp; ΕΕΕΣ" data-en="EABCT &amp; GABR certified therapist">Πιστοποιημένος θεραπευτής EABCT &amp; ΕΕΕΣ</b> — <span data-el="Μέλος RECBT Greece" data-en="Member of RECBT Greece">Μέλος RECBT Greece</span></li>
               <li><b data-el="Άδεια ασκήσεως επαγγέλματος" data-en="Professional license">Άδεια ασκήσεως επαγγέλματος</b> — 2136/01-06-2018</li>
             </ul>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ MOTTO ============ -->
+  <section class="motto-band">
+    <div class="wrap">
+      <blockquote class="motto reveal" data-el="Πιστεύω πως ο καθένας έχει ήδη μέσα του σχεδόν ό,τι χρειάζεται. Λείπουν τα εργαλεία, και η εμπιστοσύνη στον εαυτό του — αυτά τα βρίσκουμε μαζί στη θεραπεία." data-en="I believe each of us already carries almost everything we need. What is missing are the tools, and trust in oneself — those we find together in therapy.">Πιστεύω πως ο καθένας έχει ήδη μέσα του σχεδόν ό,τι χρειάζεται. Λείπουν τα εργαλεία, και η εμπιστοσύνη στον εαυτό του — αυτά τα βρίσκουμε μαζί στη θεραπεία.</blockquote>
     </div>
   </section>
 
@@ -651,49 +689,68 @@
         <button class="tab-btn active" role="tab" aria-selected="true" data-tab="t1" data-el="Άγχος &amp; Πανικός" data-en="Anxiety &amp; Panic">Άγχος &amp; Πανικός</button>
         <button class="tab-btn" role="tab" aria-selected="false" data-tab="t2" data-el="Διαταραχές &amp; Δυσκολίες" data-en="Disorders &amp; Difficulties">Διαταραχές &amp; Δυσκολίες</button>
         <button class="tab-btn" role="tab" aria-selected="false" data-tab="t3" data-el="Σχέσεις &amp; Ζωή" data-en="Relationships &amp; Life">Σχέσεις &amp; Ζωή</button>
-        <button class="tab-btn" role="tab" aria-selected="false" data-tab="t4" data-el="Ψυχοθεραπεία" data-en="Psychotherapy">Ψυχοθεραπεία</button>
       </div>
 
       <div class="tab-panel active" id="t1" role="tabpanel">
         <p class="tp-desc" data-el="Το άγχος, το στρες και οι κρίσεις πανικού είναι από τους πιο συχνούς λόγους που κάποιος ξεκινά ψυχοθεραπεία — και από αυτούς με την καλύτερη τεκμηριωμένη ανταπόκριση στη CBT." data-en="Anxiety, stress and panic attacks are among the most common reasons people begin therapy — and among those with the best-documented response to CBT.">Το άγχος, το στρες και οι κρίσεις πανικού είναι από τους πιο συχνούς λόγους που κάποιος ξεκινά ψυχοθεραπεία — και από αυτούς με την καλύτερη τεκμηριωμένη ανταπόκριση στη CBT.</p>
         <ul class="svc-list">
-          <li><span data-el="Συμβουλευτική διαχείρισης άγχους &amp; στρες" data-en="Anxiety &amp; stress management counselling">Συμβουλευτική διαχείρισης άγχους &amp; στρες</span><em data-el="50 λεπτά" data-en="50 min">50 λεπτά</em></li>
-          <li><span data-el="Συμβουλευτική διαχείρισης κρίσεων πανικού" data-en="Panic attack management counselling">Συμβουλευτική διαχείρισης κρίσεων πανικού</span><em data-el="50 λεπτά" data-en="50 min">50 λεπτά</em></li>
-          <li><span data-el="Αντιμετώπιση &amp; διαχείριση φοβιών" data-en="Phobia treatment &amp; management">Αντιμετώπιση &amp; διαχείριση φοβιών</span><em data-el="50 λεπτά" data-en="50 min">50 λεπτά</em></li>
-          <li><span data-el="Αντιμετώπιση ψυχοσωματικών διαταραχών" data-en="Psychosomatic disorder treatment">Αντιμετώπιση ψυχοσωματικών διαταραχών</span><em data-el="50 λεπτά" data-en="50 min">50 λεπτά</em></li>
+          <li><span data-el="Αντιμετώπιση και θεραπεία άγχους &amp; στρες" data-en="Treatment and therapy for anxiety &amp; stress">Αντιμετώπιση και θεραπεία άγχους &amp; στρες</span></li>
+          <li><span data-el="Αντιμετώπιση και διαχείριση κρίσεων πανικού" data-en="Treatment and management of panic attacks">Αντιμετώπιση και διαχείριση κρίσεων πανικού</span></li>
+          <li><span data-el="Αντιμετώπιση &amp; διαχείριση φοβιών" data-en="Phobia treatment &amp; management">Αντιμετώπιση &amp; διαχείριση φοβιών</span></li>
+          <li><span data-el="Αντιμετώπιση ψυχοσωματικών διαταραχών" data-en="Psychosomatic disorder treatment">Αντιμετώπιση ψυχοσωματικών διαταραχών</span></li>
+          <li><span data-el="Άγχος Υγείας" data-en="Health anxiety">Άγχος Υγείας</span></li>
+          <li><span data-el="Κοινωνικό Άγχος" data-en="Social anxiety">Κοινωνικό Άγχος</span></li>
         </ul>
       </div>
 
       <div class="tab-panel" id="t2" role="tabpanel">
         <p class="tp-desc" data-el="Δομημένη, εξατομικευμένη αντιμετώπιση για πιο σύνθετες δυσκολίες, με βάση την κλινική αξιολόγηση και τη διαφορική διάγνωση." data-en="Structured, individualised treatment for more complex difficulties, grounded in clinical assessment and differential diagnosis.">Δομημένη, εξατομικευμένη αντιμετώπιση για πιο σύνθετες δυσκολίες, με βάση την κλινική αξιολόγηση και τη διαφορική διάγνωση.</p>
         <ul class="svc-list">
-          <li><span data-el="Αντιμετώπιση ιδεοψυχαναγκαστικής διαταραχής (ΙΨΔ)" data-en="OCD treatment">Αντιμετώπιση ιδεοψυχαναγκαστικής διαταραχής (ΙΨΔ)</span><em data-el="50 λεπτά" data-en="50 min">50 λεπτά</em></li>
-          <li><span data-el="Αντιμετώπιση διατροφικών διαταραχών" data-en="Eating disorder treatment">Αντιμετώπιση διατροφικών διαταραχών</span><em data-el="50 λεπτά" data-en="50 min">50 λεπτά</em></li>
-          <li><span data-el="Αντιμετώπιση burnout" data-en="Burnout treatment">Αντιμετώπιση burnout</span><em data-el="50 λεπτά" data-en="50 min">50 λεπτά</em></li>
-          <li><span data-el="Συμβουλευτική διαχείρισης θυμού" data-en="Anger management counselling">Συμβουλευτική διαχείρισης θυμού</span><em data-el="50 λεπτά" data-en="50 min">50 λεπτά</em></li>
+          <li><span data-el="Αντιμετώπιση ιδεοψυχαναγκαστικής διαταραχής (ΙΨΔ)" data-en="OCD treatment">Αντιμετώπιση ιδεοψυχαναγκαστικής διαταραχής (ΙΨΔ)</span></li>
+          <li><span data-el="Αντιμετώπιση διατροφικών διαταραχών" data-en="Eating disorder treatment">Αντιμετώπιση διατροφικών διαταραχών</span></li>
+          <li><span data-el="Αντιμετώπιση burnout" data-en="Burnout treatment">Αντιμετώπιση burnout</span></li>
+          <li><span data-el="Συμβουλευτική διαχείρισης θυμού" data-en="Anger management counselling">Συμβουλευτική διαχείρισης θυμού</span></li>
+          <li><span data-el="Αντιμετώπιση Κατάθλιψης" data-en="Treatment for depression">Αντιμετώπιση Κατάθλιψης</span></li>
+          <li><span data-el="Διαχείριση και βελτίωση χαμηλής αυτοεκτίμησης" data-en="Managing and improving low self-esteem">Διαχείριση και βελτίωση χαμηλής αυτοεκτίμησης</span></li>
         </ul>
       </div>
 
       <div class="tab-panel" id="t3" role="tabpanel">
         <p class="tp-desc" data-el="Οι σχέσεις και οι μεγάλες αλλαγές της ζωής χρειάζονται συχνά έναν ουδέτερο, ασφαλή χώρο επεξεργασίας — είτε ατομικά είτε ως ζευγάρι." data-en="Relationships and life's big changes often need a neutral, safe space to be worked through — individually or as a couple.">Οι σχέσεις και οι μεγάλες αλλαγές της ζωής χρειάζονται συχνά έναν ουδέτερο, ασφαλή χώρο επεξεργασίας — είτε ατομικά είτε ως ζευγάρι.</p>
         <ul class="svc-list">
-          <li><span data-el="Θεραπεία ζεύγους" data-en="Couples therapy">Θεραπεία ζεύγους</span><em data-el="50 λεπτά" data-en="50 min">50 λεπτά</em></li>
-          <li><span data-el="Συμβουλευτική διαχείρισης πένθους" data-en="Grief counselling">Συμβουλευτική διαχείρισης πένθους</span><em data-el="50 λεπτά" data-en="50 min">50 λεπτά</em></li>
-          <li><span data-el="Αντιμετώπιση προβλημάτων σεξουαλικής ζωής" data-en="Sexual life difficulties counselling">Αντιμετώπιση προβλημάτων σεξουαλικής ζωής</span><em data-el="50 λεπτά" data-en="50 min">50 λεπτά</em></li>
+          <li><span data-el="Θεραπεία ζεύγους" data-en="Couples therapy">Θεραπεία ζεύγους</span></li>
+          <li><span data-el="Συμβουλευτική διαχείρισης πένθους" data-en="Grief counselling">Συμβουλευτική διαχείρισης πένθους</span></li>
+          <li><span data-el="Αντιμετώπιση προβλημάτων σεξουαλικής ζωής" data-en="Sexual life difficulties counselling">Αντιμετώπιση προβλημάτων σεξουαλικής ζωής</span></li>
         </ul>
       </div>
 
-      <div class="tab-panel" id="t4" role="tabpanel">
-        <p class="tp-desc" data-el="Ατομική ψυχοθεραπεία με τη μέθοδο CBT, δια ζώσης στο γραφείο της Ακαδημίας ή online μέσω βιντεοκλήσης — με την ίδια δομή και αποτελεσματικότητα." data-en="Individual CBT psychotherapy, in person at the Academias office or online via video call — with the same structure and effectiveness.">Ατομική ψυχοθεραπεία με τη μέθοδο CBT, δια ζώσης στο γραφείο της Ακαδημίας ή online μέσω βιντεοκλήσης — με την ίδια δομή και αποτελεσματικότητα.</p>
-        <ul class="svc-list">
-          <li><span data-el="Ατομική ψυχοθεραπεία" data-en="Individual psychotherapy">Ατομική ψυχοθεραπεία</span><em data-el="50 λεπτά" data-en="50 min">50 λεπτά</em></li>
-          <li><span data-el="Γνωσιακή - Συμπεριφοριστική ψυχοθεραπεία" data-en="Cognitive Behavioural psychotherapy">Γνωσιακή - Συμπεριφοριστική ψυχοθεραπεία</span><em data-el="50 λεπτά" data-en="50 min">50 λεπτά</em></li>
-          <li><span data-el="Συνεδρία μέσω βιντεοκλήσης" data-en="Video call session">Συνεδρία μέσω βιντεοκλήσης</span><em data-el="50 λεπτά" data-en="50 min">50 λεπτά</em></li>
-          <li><span data-el="Απλή συνεδρία" data-en="Standard session">Απλή συνεδρία</span><em data-el="50 λεπτά" data-en="50 min">50 λεπτά</em></li>
-        </ul>
-      </div>
 
-      <p class="services-note reveal" data-el="Όλες οι συνεδρίες διαρκούν 50 λεπτά. Δεν παρέχεται ηλεκτρονική συνταγογράφηση. Δωρεάν ακύρωση έως 3 ώρες πριν το ραντεβού." data-en="All sessions last 50 minutes. E-prescription services are not provided. Free cancellation up to 3 hours before the appointment.">Όλες οι συνεδρίες διαρκούν 50 λεπτά. Δεν παρέχεται ηλεκτρονική συνταγογράφηση. Δωρεάν ακύρωση έως 3 ώρες πριν το ραντεβού.</p>
+      <p class="services-note reveal" data-el="Όλες οι συνεδρίες διαρκούν 50 λεπτά. Δεν παρέχεται ηλεκτρονική συνταγογράφηση. Δωρεάν ακύρωση έως 12 ώρες πριν το ραντεβού." data-en="All sessions last 50 minutes. E-prescription services are not provided. Free cancellation up to 12 hours before the appointment.">Όλες οι συνεδρίες διαρκούν 50 λεπτά. Δεν παρέχεται ηλεκτρονική συνταγογράφηση. Δωρεάν ακύρωση έως 12 ώρες πριν το ραντεβού.</p>
+    </div>
+  </section>
+
+  <!-- ============ THE SPACE ============ -->
+  <section class="space" id="space">
+    <div class="wrap">
+      <p class="kicker reveal" data-el="Ο χώρος" data-en="The space">Ο χώρος</p>
+      <h2 class="reveal" data-el="Το γραφείο στην Ακαδημίας" data-en="The Academias St. office">Το γραφείο στην Ακαδημίας</h2>
+      <div class="space-grid">
+        <figure class="space-item reveal">
+          <img src="assets/therapy-room-desk-and-seating-1200.webp" srcset="assets/therapy-room-desk-and-seating-480.webp 480w, assets/therapy-room-desk-and-seating-800.webp 800w, assets/therapy-room-desk-and-seating-1200.webp 1200w" sizes="(max-width:760px) 92vw, (max-width:1100px) 46vw, 30vw"
+               width="1440" height="1080" loading="lazy" decoding="async"
+               alt="Η αίθουσα θεραπείας: γραφείο εργασίας, δύο γκρι πολυθρόνες και πίνακας με δέντρα" data-alt-el="Η αίθουσα θεραπείας: γραφείο εργασίας, δύο γκρι πολυθρόνες και πίνακας με δέντρα" data-alt-en="The therapy room: work desk, two grey armchairs and a painting of trees" data-lightbox>
+        </figure>
+        <figure class="space-item reveal">
+          <img src="assets/therapy-room-armchair-and-bookcase-1600.webp" srcset="assets/therapy-room-armchair-and-bookcase-480.webp 480w, assets/therapy-room-armchair-and-bookcase-800.webp 800w, assets/therapy-room-armchair-and-bookcase-1200.webp 1200w, assets/therapy-room-armchair-and-bookcase-1600.webp 1600w" sizes="(max-width:760px) 92vw, (max-width:1100px) 46vw, 30vw"
+               width="1600" height="1200" loading="lazy" decoding="async"
+               alt="Γωνιά της αίθουσας θεραπείας με γκρι πολυθρόνα, ξύλινη βιβλιοθήκη και βοηθητικά τραπεζάκια" data-alt-el="Γωνιά της αίθουσας θεραπείας με γκρι πολυθρόνα, ξύλινη βιβλιοθήκη και βοηθητικά τραπεζάκια" data-alt-en="Corner of the therapy room with a grey armchair, wooden bookcase and side tables" data-lightbox>
+        </figure>
+        <figure class="space-item reveal">
+          <img src="assets/therapy-room-wide-view-1600.webp" srcset="assets/therapy-room-wide-view-480.webp 480w, assets/therapy-room-wide-view-800.webp 800w, assets/therapy-room-wide-view-1200.webp 1200w, assets/therapy-room-wide-view-1600.webp 1600w" sizes="(max-width:760px) 92vw, (max-width:1100px) 46vw, 30vw"
+               width="1600" height="1200" loading="lazy" decoding="async"
+               alt="Γενική άποψη της αίθουσας θεραπείας με τις πολυθρόνες, το γραφείο και την είσοδο" data-alt-el="Γενική άποψη της αίθουσας θεραπείας με τις πολυθρόνες, το γραφείο και την είσοδο" data-alt-en="Wide view of the therapy room showing the armchairs, the desk and the entrance" data-lightbox>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -710,7 +767,26 @@
     </div>
     <div class="marquee" aria-label="Κριτικές θεραπευόμενων">
       <div class="marquee-track">
-        <!-- set A -->
+        <!-- =====================================================================
+             HOW TO ADD A doctoranytime REVIEW
+             Copy the single block below, paste it as the LAST child of
+             .marquee-track, and replace the three marked pieces. Nothing else
+             needs touching - the loop copy is generated in JS at runtime, so a
+             review is added in exactly one place.
+
+             <div class="rv-card">
+               <div class="stars">★★★★★</div>
+               <p data-el="«ΤΟ ΚΕΙΜΕΝΟ ΤΗΣ ΚΡΙΤΙΚΗΣ ΣΤΑ ΕΛΛΗΝΙΚΑ»" data-en="«THE REVIEW TEXT IN ENGLISH»">«ΤΟ ΚΕΙΜΕΝΟ ΤΗΣ ΚΡΙΤΙΚΗΣ ΣΤΑ ΕΛΛΗΝΙΚΑ»</p>
+               <cite data-el="Επαληθευμένη αξιολόγηση · ΜΗΝΑΣ ΕΤΟΣ" data-en="Verified review · MONTH YEAR">Επαληθευμένη αξιολόγηση · ΜΗΝΑΣ ΕΤΟΣ</cite>
+             </div>
+
+             Also bump the count in the .score block above ("σε 8 επαληθευμένες
+             αξιολογήσεις"). Deliberately NO Review or aggregateRating schema for
+             these: they are third-party reviews hosted on doctoranytime, and
+             marking up other sites' reviews as your own is against Google's
+             structured-data guidelines. They are shown visually and the section
+             links out to the source instead.
+             ===================================================================== -->
         <div class="rv-card"><div class="stars">★★★★★</div><p data-el="«Δουλεύουμε μαζί 2 χρόνια τώρα. “Κουμπώσαμε” από την πρώτη στιγμή. Θα τον ευχαριστώ για πάντα που με ξεκλείδωσε. Το(ν) είχα ανάγκη.»" data-en="“We have been working together for 2 years now. We clicked from the very first moment. I will forever thank him for unlocking me. I needed him.”">«Δουλεύουμε μαζί 2 χρόνια τώρα. “Κουμπώσαμε” από την πρώτη στιγμή. Θα τον ευχαριστώ για πάντα που με ξεκλείδωσε. Το(ν) είχα ανάγκη.»</p><cite>Marianthi</cite></div>
         <div class="rv-card"><div class="stars">★★★★★</div><p data-el="«Δουλέψαμε πάνω σε χρόνια προβλήματα που αντιμετώπιζα και με βοήθησε πάρα πολύ. Η μεθοδικότητά του και η προσέγγισή του με βοήθησαν πολύ. Τον ευχαριστώ θερμά!»" data-en="“We worked on problems I had faced for years and he helped me enormously. His methodical approach helped me greatly. My warmest thanks!”">«Δουλέψαμε πάνω σε χρόνια προβλήματα που αντιμετώπιζα και με βοήθησε πάρα πολύ. Η μεθοδικότητά του και η προσέγγισή του με βοήθησαν πολύ. Τον ευχαριστώ θερμά!»</p><cite>Anastasia</cite></div>
         <div class="rv-card"><div class="stars">★★★★★</div><p data-el="«Ήρεμος, φιλικός και σωστός στις συμβουλές του. Νιώθω ότι είμαι ασφαλής. Σε ευχαριστώ!»" data-en="“Calm, friendly and sound in his advice. I feel safe. Thank you!”">«Ήρεμος, φιλικός και σωστός στις συμβουλές του. Νιώθω ότι είμαι ασφαλής. Σε ευχαριστώ!»</p><cite>Niki</cite></div>
@@ -719,15 +795,6 @@
         <div class="rv-card"><div class="stars">★★★★★</div><p data-el="«Με έκανε να νιώσω άνετα από την πρώτη συνεδρία και να ανοιχτώ χωρίς φόβο. Μου εμπνέει εμπιστοσύνη και ασφάλεια.»" data-en="“He made me feel at ease from the first session and open up without fear. He inspires trust and safety.”">«Με έκανε να νιώσω άνετα από την πρώτη συνεδρία και να ανοιχτώ χωρίς φόβο. Μου εμπνέει εμπιστοσύνη και ασφάλεια.»</p><cite>Dimitris</cite></div>
         <div class="rv-card"><div class="stars">★★★★★</div><p data-el="«Νιώθω ότι με καταλαβαίνει χωρίς να με κρίνει. Ξεκίνησα για άγχος και κρίσεις πανικού· τώρα δουλεύουμε στο να βρω ξανά τα πατήματά μου. Τον ευχαριστώ για όλα!»" data-en="“I feel understood without being judged. I started for anxiety and panic attacks; now we are working on finding my footing again. Thank you for everything!”">«Νιώθω ότι με καταλαβαίνει χωρίς να με κρίνει. Ξεκίνησα για άγχος και κρίσεις πανικού· τώρα δουλεύουμε στο να βρω ξανά τα πατήματά μου. Τον ευχαριστώ για όλα!»</p><cite>Κατερίνα</cite></div>
         <div class="rv-card"><div class="stars">★★★★★</div><p data-el="«Μου έδειξε έναν διαφορετικό τρόπο σκέψης και αντίληψης των γεγονότων. Μαζί βάζουμε στόχους και τους καταφέρνουμε! Συνεχίζουμε μαζί!»" data-en="“He showed me a different way of thinking and perceiving events. Together we set goals and achieve them! We continue together!”">«Μου έδειξε έναν διαφορετικό τρόπο σκέψης και αντίληψης των γεγονότων. Μαζί βάζουμε στόχους και τους καταφέρνουμε! Συνεχίζουμε μαζί!»</p><cite>Κωνσταντίνος</cite></div>
-        <!-- set B (duplicate for seamless loop, hidden from AT) -->
-        <div class="rv-card" aria-hidden="true"><div class="stars">★★★★★</div><p data-el="«Δουλεύουμε μαζί 2 χρόνια τώρα. “Κουμπώσαμε” από την πρώτη στιγμή. Θα τον ευχαριστώ για πάντα που με ξεκλείδωσε. Το(ν) είχα ανάγκη.»" data-en="“We have been working together for 2 years now. We clicked from the very first moment. I will forever thank him for unlocking me. I needed him.”">«Δουλεύουμε μαζί 2 χρόνια τώρα. “Κουμπώσαμε” από την πρώτη στιγμή. Θα τον ευχαριστώ για πάντα που με ξεκλείδωσε. Το(ν) είχα ανάγκη.»</p><cite>Marianthi</cite></div>
-        <div class="rv-card" aria-hidden="true"><div class="stars">★★★★★</div><p data-el="«Δουλέψαμε πάνω σε χρόνια προβλήματα που αντιμετώπιζα και με βοήθησε πάρα πολύ. Η μεθοδικότητά του και η προσέγγισή του με βοήθησαν πολύ. Τον ευχαριστώ θερμά!»" data-en="“We worked on problems I had faced for years and he helped me enormously. His methodical approach helped me greatly. My warmest thanks!”">«Δουλέψαμε πάνω σε χρόνια προβλήματα που αντιμετώπιζα και με βοήθησε πάρα πολύ. Η μεθοδικότητά του και η προσέγγισή του με βοήθησαν πολύ. Τον ευχαριστώ θερμά!»</p><cite>Anastasia</cite></div>
-        <div class="rv-card" aria-hidden="true"><div class="stars">★★★★★</div><p data-el="«Ήρεμος, φιλικός και σωστός στις συμβουλές του. Νιώθω ότι είμαι ασφαλής. Σε ευχαριστώ!»" data-en="“Calm, friendly and sound in his advice. I feel safe. Thank you!”">«Ήρεμος, φιλικός και σωστός στις συμβουλές του. Νιώθω ότι είμαι ασφαλής. Σε ευχαριστώ!»</p><cite>Niki</cite></div>
-        <div class="rv-card" aria-hidden="true"><div class="stars">★★★★★</div><p data-el="«Δεν είχα ξαναπάει σε ψυχολόγο. Ήθελα να αντιμετωπίσω τις εκρήξεις θυμού μου. Με βοήθησε να κατανοήσω πολλά πράγματα για εμένα. Τον ευχαριστώ θερμά.»" data-en="“I had never seen a psychologist before. I wanted to deal with my anger outbursts. He helped me understand many things about myself. My warmest thanks.”">«Δεν είχα ξαναπάει σε ψυχολόγο. Ήθελα να αντιμετωπίσω τις εκρήξεις θυμού μου. Με βοήθησε να κατανοήσω πολλά πράγματα για εμένα. Τον ευχαριστώ θερμά.»</p><cite>Giorgos</cite></div>
-        <div class="rv-card" aria-hidden="true"><div class="stars">★★★★★</div><p data-el="«Ξεκινήσαμε διαδικτυακές συνεδρίες επειδή ζω στο εξωτερικό. Κατάλαβα ότι δεν έχει σχέση η απόσταση αν ξέρεις πώς να βοηθήσεις τον άλλο! “Nu kan jag andas igen”!»" data-en="“We started online sessions because I live abroad. I realised distance is irrelevant when you know how to help someone! ‘Nu kan jag andas igen’!”">«Ξεκινήσαμε διαδικτυακές συνεδρίες επειδή ζω στο εξωτερικό. Κατάλαβα ότι δεν έχει σχέση η απόσταση αν ξέρεις πώς να βοηθήσεις τον άλλο! “Nu kan jag andas igen”!»</p><cite>Χάρης</cite></div>
-        <div class="rv-card" aria-hidden="true"><div class="stars">★★★★★</div><p data-el="«Με έκανε να νιώσω άνετα από την πρώτη συνεδρία και να ανοιχτώ χωρίς φόβο. Μου εμπνέει εμπιστοσύνη και ασφάλεια.»" data-en="“He made me feel at ease from the first session and open up without fear. He inspires trust and safety.”">«Με έκανε να νιώσω άνετα από την πρώτη συνεδρία και να ανοιχτώ χωρίς φόβο. Μου εμπνέει εμπιστοσύνη και ασφάλεια.»</p><cite>Dimitris</cite></div>
-        <div class="rv-card" aria-hidden="true"><div class="stars">★★★★★</div><p data-el="«Νιώθω ότι με καταλαβαίνει χωρίς να με κρίνει. Ξεκίνησα για άγχος και κρίσεις πανικού· τώρα δουλεύουμε στο να βρω ξανά τα πατήματά μου. Τον ευχαριστώ για όλα!»" data-en="“I feel understood without being judged. I started for anxiety and panic attacks; now we are working on finding my footing again. Thank you for everything!”">«Νιώθω ότι με καταλαβαίνει χωρίς να με κρίνει. Ξεκίνησα για άγχος και κρίσεις πανικού· τώρα δουλεύουμε στο να βρω ξανά τα πατήματά μου. Τον ευχαριστώ για όλα!»</p><cite>Κατερίνα</cite></div>
-        <div class="rv-card" aria-hidden="true"><div class="stars">★★★★★</div><p data-el="«Μου έδειξε έναν διαφορετικό τρόπο σκέψης και αντίληψης των γεγονότων. Μαζί βάζουμε στόχους και τους καταφέρνουμε! Συνεχίζουμε μαζί!»" data-en="“He showed me a different way of thinking and perceiving events. Together we set goals and achieve them! We continue together!”">«Μου έδειξε έναν διαφορετικό τρόπο σκέψης και αντίληψης των γεγονότων. Μαζί βάζουμε στόχους και τους καταφέρνουμε! Συνεχίζουμε μαζί!»</p><cite>Κωνσταντίνος</cite></div>
       </div>
     </div>
     <div class="wrap">
@@ -751,18 +818,19 @@
           <div class="loc-body">
             <div class="loc-item"><b data-el="Μετρό" data-en="Metro">Μετρό</b><span data-el="Ομόνοια (340μ) · Πανεπιστήμιο (450μ)" data-en="Omonia (340m) · Panepistimio (450m)">Ομόνοια (340μ) · Πανεπιστήμιο (450μ)</span></div>
             <div class="loc-item"><b>Parking</b><span data-el="Σταθμός Πλ. Κάνιγγος (150μ)" data-en="Kaningos Sq. car park (150m)">Σταθμός Πλ. Κάνιγγος (150μ)</span></div>
-            <div class="loc-item"><b data-el="Τηλέφωνο" data-en="Phone">Τηλέφωνο</b><a href="tel:+302107440351">210 744 0351</a></div>
+            <div class="loc-item"><b data-el="Τηλέφωνο" data-en="Phone">Τηλέφωνο</b><a href="tel:+306985800405">698 580 0405</a></div>
             <div class="loc-item"><b data-el="Συνεδρίες" data-en="Sessions">Συνεδρίες</b><span data-el="Δια ζώσης &amp; online (βιντεοκλήση)" data-en="In person &amp; online (video call)">Δια ζώσης &amp; online (βιντεοκλήση)</span></div>
             <div class="loc-item"><b data-el="Πληρωμή" data-en="Payment">Πληρωμή</b><span data-el="Κάρτα · Klarna · Μετρητά" data-en="Card · Klarna · Cash">Κάρτα · Klarna · Μετρητά</span></div>
-            <div class="loc-item"><b data-el="Ακύρωση" data-en="Cancellation">Ακύρωση</b><span data-el="Δωρεάν έως 3 ώρες πριν" data-en="Free up to 3 hours before">Δωρεάν έως 3 ώρες πριν</span></div>
+            <div class="loc-item"><b data-el="Ακύρωση" data-en="Cancellation">Ακύρωση</b><span data-el="Δωρεάν έως 12 ώρες πριν" data-en="Free up to 12 hours before">Δωρεάν έως 12 ώρες πριν</span></div>
           </div>
         </div>
         
         <div class="cta-panel reveal">
           <h3 data-el="Ας μιλήσουμε" data-en="Let's talk">Ας μιλήσουμε</h3>
           <p data-el="Το πρώτο τηλεφώνημα είναι συχνά το δυσκολότερο — και το σημαντικότερο — βήμα. Θα χαρώ να συζητήσουμε το αίτημά σας και να βρούμε μαζί τον κατάλληλο χρόνο." data-en="The first phone call is often the hardest — and the most important — step. I will be glad to discuss your request and find the right time together.">Το πρώτο τηλεφώνημα είναι συχνά το δυσκολότερο — και το σημαντικότερο — βήμα. Θα χαρώ να συζητήσουμε το αίτημά σας και να βρούμε μαζί τον κατάλληλο χρόνο.</p>
-          <a class="tel" href="tel:+302107440351">210 744 0351</a>
+          <a class="tel" href="tel:+306985800405">698 580 0405</a>
           <a class="btn" href="https://www.doctoranytime.gr/d/Psychologos/pefanis-konstantinos" target="_blank" rel="noopener" data-el="Κλείστε ραντεβού στο doctoranytime" data-en="Book via doctoranytime">Κλείστε ραντεβού στο doctoranytime</a>
+          <a class="tel" href="https://www.instagram.com/focustherapy_/" target="_blank" rel="noopener" style="font-size:16px">@focustherapy_</a>
           <p class="note" data-el="Συνεδρίες στα ελληνικά και στα αγγλικά." data-en="Sessions in Greek and English.">Συνεδρίες στα ελληνικά και στα αγγλικά.</p>
         </div>
       </div>
@@ -772,8 +840,29 @@
   <footer>
     <div class="wrap foot">
       <a class="logo" href="#top" aria-label="Αρχή">
+        <img class="foot-logo" src="assets/focus-therapy-logo-800.webp" srcset="assets/focus-therapy-logo-480.webp 480w, assets/focus-therapy-logo-800.webp 800w" width="1080" height="1080" loading="lazy" decoding="async"
+             alt="Focus Therapy — Κωνσταντίνος Πεφάνης">
         <span class="lg-name">Κωνσταντίνος Πεφάνης<small data-el="Ψυχολόγος · Ψυχοθεραπευτής — Αθήνα" data-en="Psychologist · Psychotherapist — Athens">Ψυχολόγος · Ψυχοθεραπευτής — Αθήνα</small></span>
       </a>
+      <!-- ACCREDITATION BADGE ROW
+           Drop new badges in as assets/<name>-<width>.webp and add one <img class="badge"> below,
+           copying an existing line. They are normalised to a single height and rendered in
+           greyscale at 55% opacity so a mixed bag of logos still reads as one tidy row;
+           they come back to full colour on hover/focus. Nothing else needs changing. -->
+      <div class="foot-badges">
+        <img class="badge" src="assets/eabct-accreditation-logo-480.webp" srcset="assets/eabct-accreditation-logo-480.webp 480w" width="685" height="261" loading="lazy" decoding="async"
+             alt="Πιστοποίηση EABCT — European Association for Behavioural and Cognitive Therapies"
+             data-alt-el="Πιστοποίηση EABCT — European Association for Behavioural and Cognitive Therapies"
+             data-alt-en="EABCT accreditation — European Association for Behavioural and Cognitive Therapies">
+        <img class="badge" src="assets/eees-accreditation-logo-440.webp" srcset="assets/eees-accreditation-logo-440.webp 440w" width="440" height="454" loading="lazy" decoding="async"
+             alt="Πιστοποίηση ΕΕΕΣ — Ελληνική Εταιρεία Έρευνας της Συμπεριφοράς"
+             data-alt-el="Πιστοποίηση ΕΕΕΣ — Ελληνική Εταιρεία Έρευνας της Συμπεριφοράς"
+             data-alt-en="ΕΕΕΣ accreditation — Hellenic Association for Behaviour Research">
+        <!-- next badge goes here -->
+      </div>
+      <a class="foot-tel" href="tel:+306985800405">698 580 0405</a>
+      <a class="foot-ig" href="https://www.instagram.com/focustherapy_/" target="_blank" rel="noopener"
+         data-el="Instagram" data-en="Instagram">Instagram</a>
       <span data-el="© 2026 Κωνσταντίνος Πεφάνης · Άδεια 2136/01-06-2018" data-en="© 2026 Konstantinos Pefanis · License 2136/01-06-2018">© 2026 Κωνσταντίνος Πεφάνης · Άδεια 2136/01-06-2018</span>
       <span>Designed by <a href="https://advonmedia.com" target="_blank" rel="noopener">Advon Media</a></span>
     </div>
@@ -788,6 +877,19 @@
   <script>
   (function(){
     "use strict";
+    /* The marquee needs two copies of the card set to loop seamlessly. Keeping the second
+       copy in the HTML meant every new review had to be pasted twice; it is cloned here
+       instead, and marked aria-hidden so screen readers only ever meet each review once. */
+    (function cloneReviewLoop(){
+      var track = document.querySelector(".marquee-track");
+      if (!track) return;
+      var originals = Array.prototype.slice.call(track.children);
+      originals.forEach(function(node){
+        var copy = node.cloneNode(true);
+        copy.setAttribute("aria-hidden", "true");
+        track.appendChild(copy);
+      });
+    })();
 
     /* ---------- Intro Anim Trigger ---------- */
     window.addEventListener("load", function(){
@@ -802,6 +904,11 @@
       document.querySelectorAll("[data-el]").forEach(function(el){
         var txt = el.getAttribute(lang === "el" ? "data-el" : "data-en");
         if (txt !== null) el.innerHTML = txt;
+      });
+      /* alt text is content too - swap it wherever a localised pair is provided */
+      document.querySelectorAll("[data-alt-el]").forEach(function(img){
+        var a = img.getAttribute(lang === "el" ? "data-alt-el" : "data-alt-en");
+        if (a !== null) img.setAttribute("alt", a);
       });
       document.querySelectorAll("[data-setlang]").forEach(function(b){
         b.classList.toggle("active", b.getAttribute("data-setlang") === lang);
