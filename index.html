@@ -469,6 +469,20 @@
     .cta-panel p { color: rgba(255,255,255,0.8); font-size: 17px; font-weight: 300; margin-bottom: 36px; line-height: 1.6; position: relative; z-index: 2; }
     .cta-panel .tel { display: inline-block; font-family: var(--serif); font-size: 38px; color: #fff; text-decoration: none; margin-bottom: 30px; position: relative; z-index: 2; transition: 0.3s; }
     .cta-panel .tel:hover { color: var(--accent-soft); transform: translateX(5px); }
+    /* Stacked contact list: phone / email / instagram, one under the other */
+    .cta-list { position: relative; z-index: 2; margin-bottom: 28px; }
+    .cta-row { display: block; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.16); }
+    .cta-row:first-child { border-top: 1px solid rgba(255,255,255,0.16); }
+    .cta-row b {
+      display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 6px;
+    }
+    .cta-row a {
+      display: inline-block; font-family: var(--serif); font-size: 26px; line-height: 1.2;
+      color: #fff; text-decoration: none; transition: 0.3s; word-break: break-word;
+    }
+    .cta-row a:hover { color: var(--accent-soft); transform: translateX(5px); }
+    @media (max-width: 520px) { .cta-row a { font-size: clamp(19px, 5.6vw, 26px); } }
     .cta-panel .btn { background: #fff; color: var(--accent-deep); width: 100%; text-align: center; padding: 18px; font-size: 16px; position: relative; z-index: 2; }
     .cta-panel .btn:hover { background: var(--bg); }
     .cta-panel .note { font-size: 13.5px; color: rgba(255,255,255,0.6); margin-top: 24px; margin-bottom: 0; text-align: center; position: relative; z-index: 2; }
@@ -839,10 +853,21 @@
         <div class="cta-panel reveal">
           <h3 data-el="Ας μιλήσουμε" data-en="Let's talk">Ας μιλήσουμε</h3>
           <p data-el="Το πρώτο τηλεφώνημα είναι συχνά το δυσκολότερο — και το σημαντικότερο — βήμα. Θα χαρώ να συζητήσουμε το αίτημά σας και να βρούμε μαζί τον κατάλληλο χρόνο." data-en="The first phone call is often the hardest — and the most important — step. I will be glad to discuss your request and find the right time together.">Το πρώτο τηλεφώνημα είναι συχνά το δυσκολότερο — και το σημαντικότερο — βήμα. Θα χαρώ να συζητήσουμε το αίτημά σας και να βρούμε μαζί τον κατάλληλο χρόνο.</p>
-          <a class="tel" href="tel:+306985800405" style="margin-bottom: 8px;">698 580 0405</a>
-          <a class="tel" href="mailto:pefanistherapy@gmail.com" style="font-size: clamp(18px, 5vw, 24px); margin-bottom: 30px;">pefanistherapy@gmail.com</a>
+          <div class="cta-list">
+            <div class="cta-row">
+              <b data-el="Τηλέφωνο επικοινωνίας" data-en="Phone">Τηλέφωνο επικοινωνίας</b>
+              <a href="tel:+306985800405">6985800405</a>
+            </div>
+            <div class="cta-row">
+              <b data-el="Email" data-en="Email">Email</b>
+              <a href="mailto:pefanistherapy@gmail.com">pefanistherapy@gmail.com</a>
+            </div>
+            <div class="cta-row">
+              <b data-el="Instagram" data-en="Instagram">Instagram</b>
+              <a href="https://www.instagram.com/focustherapy_/" target="_blank" rel="noopener">@focustherapy_</a>
+            </div>
+          </div>
           <a class="btn" href="https://www.doctoranytime.gr/d/Psychologos/pefanis-konstantinos" target="_blank" rel="noopener" data-el="Κλείστε ραντεβού στο doctoranytime" data-en="Book via doctoranytime">Κλείστε ραντεβού στο doctoranytime</a>
-          <a class="tel" href="https://www.instagram.com/focustherapy_/" target="_blank" rel="noopener" style="font-size:16px; margin-top: 24px; margin-bottom: 0;">@focustherapy_</a>
           <p class="note" data-el="Συνεδρίες στα ελληνικά και στα αγγλικά." data-en="Sessions in Greek and English.">Συνεδρίες στα ελληνικά και στα αγγλικά.</p>
         </div>
       </div>
