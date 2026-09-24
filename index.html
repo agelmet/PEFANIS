@@ -22,10 +22,34 @@
   <meta name="twitter:card" content="summary">
   <meta name="theme-color" content="#131C21">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%231B2A32'/><text x='50' y='66' font-size='44' text-anchor='middle' fill='%23F4F1EC' font-family='Georgia'>ΚΠ</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <script type="application/ld+json">
+  <style id="advon-fonts">/* fonts served from this site (was Google Fonts) */
+@font-face{font-family:'Source Sans 3';font-style:normal;font-display:swap;font-weight:300;src:url(assets/fonts/source-sans-3-greek-300-normal.woff2) format('woff2');}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-display:swap;font-weight:300;src:url(assets/fonts/source-sans-3-latin-300-normal.woff2) format('woff2');}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-display:swap;font-weight:300;src:url(assets/fonts/source-sans-3-latin-ext-300-normal.woff2) format('woff2');}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-display:swap;font-weight:400;src:url(assets/fonts/source-sans-3-greek-400-normal.woff2) format('woff2');}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-display:swap;font-weight:400;src:url(assets/fonts/source-sans-3-latin-400-normal.woff2) format('woff2');}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-display:swap;font-weight:400;src:url(assets/fonts/source-sans-3-latin-ext-400-normal.woff2) format('woff2');}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-display:swap;font-weight:500;src:url(assets/fonts/source-sans-3-greek-500-normal.woff2) format('woff2');}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-display:swap;font-weight:500;src:url(assets/fonts/source-sans-3-latin-500-normal.woff2) format('woff2');}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-display:swap;font-weight:500;src:url(assets/fonts/source-sans-3-latin-ext-500-normal.woff2) format('woff2');}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-display:swap;font-weight:600;src:url(assets/fonts/source-sans-3-greek-600-normal.woff2) format('woff2');}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-display:swap;font-weight:600;src:url(assets/fonts/source-sans-3-latin-600-normal.woff2) format('woff2');}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-display:swap;font-weight:600;src:url(assets/fonts/source-sans-3-latin-ext-600-normal.woff2) format('woff2');}
+@font-face{font-family:'Literata';font-style:italic;font-display:swap;font-weight:500;src:url(assets/fonts/literata-greek-500-italic.woff2) format('woff2');}
+@font-face{font-family:'Literata';font-style:italic;font-display:swap;font-weight:500;src:url(assets/fonts/literata-latin-500-italic.woff2) format('woff2');}
+@font-face{font-family:'Literata';font-style:italic;font-display:swap;font-weight:500;src:url(assets/fonts/literata-latin-ext-500-italic.woff2) format('woff2');}
+@font-face{font-family:'Literata';font-style:normal;font-display:swap;font-weight:500;src:url(assets/fonts/literata-greek-500-normal.woff2) format('woff2');}
+@font-face{font-family:'Literata';font-style:normal;font-display:swap;font-weight:500;src:url(assets/fonts/literata-latin-500-normal.woff2) format('woff2');}
+@font-face{font-family:'Literata';font-style:normal;font-display:swap;font-weight:500;src:url(assets/fonts/literata-latin-ext-500-normal.woff2) format('woff2');}
+@font-face{font-family:'Literata';font-style:normal;font-display:swap;font-weight:600;src:url(assets/fonts/literata-greek-600-normal.woff2) format('woff2');}
+@font-face{font-family:'Literata';font-style:normal;font-display:swap;font-weight:600;src:url(assets/fonts/literata-latin-600-normal.woff2) format('woff2');}
+@font-face{font-family:'Literata';font-style:normal;font-display:swap;font-weight:600;src:url(assets/fonts/literata-latin-ext-600-normal.woff2) format('woff2');}
+@font-face{font-family:'Literata';font-style:normal;font-display:swap;font-weight:700;src:url(assets/fonts/literata-greek-700-normal.woff2) format('woff2');}
+@font-face{font-family:'Literata';font-style:normal;font-display:swap;font-weight:700;src:url(assets/fonts/literata-latin-700-normal.woff2) format('woff2');}
+@font-face{font-family:'Literata';font-style:normal;font-display:swap;font-weight:700;src:url(assets/fonts/literata-latin-ext-700-normal.woff2) format('woff2');}
+h1,h2,h3,h4,h5{overflow-wrap:anywhere}
+</style>
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
@@ -90,7 +114,7 @@
       --forest-soft: #E3EAE4;
       --line: #D9D6CE;
       --paper: #FFFFFF;
-      --serif: "Playfair Display", Georgia, serif;
+      --serif: "Literata", Georgia, serif;
       --sans: "Source Sans 3", -apple-system, "Segoe UI", sans-serif;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -901,7 +925,7 @@
       <a class="foot-ig" href="https://www.instagram.com/focustherapy_/" target="_blank" rel="noopener"
          data-el="Instagram" data-en="Instagram">Instagram</a>
       <span data-el="© 2026 Κωνσταντίνος Πεφάνης · Άδεια 2136/01-06-2018" data-en="© 2026 Konstantinos Pefanis · License 2136/01-06-2018">© 2026 Κωνσταντίνος Πεφάνης · Άδεια 2136/01-06-2018</span>
-      <span>Designed by <a href="https://advonmedia.com" target="_blank" rel="noopener">Advon Media</a></span>
+      <span>Designed by <a href="https://advonmedia.com" target="_blank" rel="noopener">Advon Media</a> <span aria-hidden="true">·</span> <a href="privacy.html" data-en="Privacy policy">Πολιτική απορρήτου</a></span>
     </div>
   </footer>
 
